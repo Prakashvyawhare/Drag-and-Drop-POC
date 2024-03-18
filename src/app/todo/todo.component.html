@@ -1,0 +1,63 @@
+<h3>Dragable</h3>
+<div
+  cdkDropList
+  class="example-list" #outside="cdkDropList"
+  (cdkDropListDropped)="drop($event)"
+  [cdkDropListConnectedTo]="['i'+ 0]"
+>
+  <div
+    class="example-box"
+    *ngFor="let row of callActivityForm[0].rows; let i = index"
+    cdkDrag
+    cdkDragLockAxis="y"
+    fxLayout="row"
+    fxLayoutGap="10px"
+  >
+
+    <div
+      style="width: 100%;" [id]="'i'+i"
+      cdkDropList [cdkDropListConnectedTo]="['outside']"
+      (cdkDropListDropped)="dropHorizon($event, i)"
+      cdkDropListOrientation="horizontal"
+    >
+      <div
+        *ngFor="let field of row; let m = index"
+        fxFlex
+        style="margin: 0 10px 0 10px;" 
+        cdkDrag
+      >
+        <div
+          #outsideDivs
+          [id]="'outside-div-' + i + '-' + m"
+          style=" border: thin blue solid; "
+        >
+          {{ field.label }}
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- <h3>Resizable</h3>
+  <div class="example-list-2">
+    <div
+      class="example-box2"
+      *ngFor="let row of callActivityForm[0].rows; let i = index"
+      fxLayout="row"
+      fxLayoutGGap="10px"
+    >
+      <div *ngFor="let field of row; let m = index" style="width: 100%;" fxFlex>
+        <div
+          style="margin: 0 10px 0 10px; border: thin red solid; "
+          mwlResizable
+          [enableGhostResize]="true"
+          [resizeEdges]="{ bottom: false, right: true, top: false, left: true }"
+          (resizeEnd)="onResizeEnd($event, i, m)"
+          #divs
+          [id]="'div-' + i + '-' + m"
+        >
+          {{ field.label }}
+        </div>
+      </div>
+    </div>
+  </div> -->
+</div>
+
