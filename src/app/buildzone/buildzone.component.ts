@@ -54,7 +54,7 @@ export class BuildzoneComponent implements OnInit {
 
   // ];
   done:any[] = [
-    []
+
     // [
     //   {
     //     id: '23231',
@@ -113,7 +113,7 @@ export class BuildzoneComponent implements OnInit {
     //   }
     // ]
   ]
-  DropListConnectedTo: string[] = [""]
+  DropListConnectedTo: string[] = []
   // isConnectToparentList: boolean = true;
 
 
@@ -197,8 +197,8 @@ addNewFieldToList(index: number, _field: any, list: any[]) {
       for (let i = 0; i < this.done.length; i++) {
         this.DropListConnectedTo.unshift(`droplist-${i}`);
       }
-this.DropListConnectedTo.push('doneList')
     }
+this.DropListConnectedTo.push('doneList')
   }
 
   /** Predicate function that doesn't allow items to be dropped into a list. */
